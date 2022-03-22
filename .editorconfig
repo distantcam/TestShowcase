@@ -1,0 +1,57 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+quote_type = single
+
+[*.json]
+insert_final_newline = false
+
+[*.cs]
+indent_size = 4
+csharp_prefer_braces = true:warning
+dotnet_style_explicit_tuple_names = true:suggestion
+dotnet_style_prefer_inferred_tuple_names = true:suggestion
+dotnet_sort_system_directives_first = true
+
+dotnet_style_require_accessibility_modifiers = always:warning
+
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+csharp_style_namespace_declarations = file_scoped:warning
+
+##########################################
+# Styles
+##########################################
+
+# camel_case_style - Define the camelCase style
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+# pascal_case_style - Define the PascalCase style
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+# underscore_prefix_style - Prefix names with _ and camelCase name
+dotnet_naming_style.underscore_prefix_style.capitalization = camel_case
+dotnet_naming_style.underscore_prefix_style.required_prefix = _
+
+##########################################
+# Rules
+##########################################
+
+# all static fields must be pascal case
+dotnet_naming_symbols.static_fields.applicable_accessibilities = *
+dotnet_naming_symbols.static_fields.applicable_kinds = field
+dotnet_naming_symbols.static_fields.required_modifiers = static
+dotnet_naming_rule.private_static_fields_rule.symbols = static_fields
+dotnet_naming_rule.private_static_fields_rule.style = pascal_case_style
+dotnet_naming_rule.private_static_fields_rule.severity = silent
+
+# private fields must be prefixed with _
+dotnet_naming_symbols.fields_group.applicable_kinds = field
+dotnet_naming_symbols.fields_group.applicable_accessibilities = *
+dotnet_naming_rule.private_fields_rule.symbols = fields_group
+dotnet_naming_rule.private_fields_rule.style = underscore_prefix_style
+dotnet_naming_rule.private_fields_rule.severity = warning
